@@ -6,7 +6,7 @@ public class CreateCollection {
 
     private String collection;
 
-    private Boolean publicWrite;
+    private Boolean public_write;
 
     private String email_notification;
 
@@ -18,8 +18,8 @@ public class CreateCollection {
         return this.collection;
     }
 
-    public Boolean getPublicWrite() {
-        return this.publicWrite;
+    public Boolean getPublic_write() {
+        return this.public_write;
     }
 
     public String getEmail_notification() {
@@ -39,8 +39,8 @@ public class CreateCollection {
         return this;
     }
 
-    public CreateCollection setPublicWrite(Boolean publicWrite) {
-        this.publicWrite = publicWrite;
+    public CreateCollection setPublic_write(Boolean public_write) {
+        this.public_write = public_write;
         return this;
     }
 
@@ -68,8 +68,8 @@ public class CreateCollection {
         final Object other$collection = other.getCollection();
         if (!Objects.equals(this$collection, other$collection))
             return false;
-        final Object this$publicWrite = this.getPublicWrite();
-        final Object other$publicWrite = other.getPublicWrite();
+        final Object this$publicWrite = this.getPublic_write();
+        final Object other$publicWrite = other.getPublic_write();
         if (!Objects.equals(this$publicWrite, other$publicWrite))
             return false;
         final Object this$email_notification = this.getEmail_notification();
@@ -95,7 +95,7 @@ public class CreateCollection {
         int result = 1;
         final Object $collection = this.getCollection();
         result = result * PRIME + ($collection == null ? 43 : $collection.hashCode());
-        final Object $publicWrite = this.getPublicWrite();
+        final Object $publicWrite = this.getPublic_write();
         result = result * PRIME + ($publicWrite == null ? 43 : $publicWrite.hashCode());
         final Object $email_notification = this.getEmail_notification();
         result = result * PRIME + ($email_notification == null ? 43 : $email_notification.hashCode());
@@ -107,7 +107,7 @@ public class CreateCollection {
     }
 
     public String toString() {
-        return "CreateCollection(collection=" + this.getCollection() + ", publicWrite=" + this.getPublicWrite() + ", email_notification=" + this.getEmail_notification() + ", webhook=" + this.getWebhook() + ", webhook_secret=" + this.getWebhook_secret() + ")";
+        return "CreateCollection(collection=" + this.getCollection() + ", publicWrite=" + this.getPublic_write() + ", email_notification=" + this.getEmail_notification() + ", webhook=" + this.getWebhook() + ", webhook_secret=" + this.getWebhook_secret() + ")";
     }
 
 }
