@@ -1,5 +1,7 @@
 package io.kvstore.api.representationals.items;
 
+import java.util.Objects;
+
 public class ItemValue {
 
     private String value;
@@ -7,16 +9,6 @@ public class ItemValue {
     private Double created_at;
 
     private Double updated_at;
-
-    ItemValue(String value, Double created_at, Double updated_at) {
-        this.value = value;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
-
-    public static ItemValueBuilder builder() {
-        return new ItemValueBuilder();
-    }
 
     public String getValue() {
         return this.value;
@@ -30,16 +22,19 @@ public class ItemValue {
         return this.updated_at;
     }
 
-    public void setValue(String value) {
+    public ItemValue setValue(String value) {
         this.value = value;
+        return this;
     }
 
-    public void setCreated_at(Double created_at) {
+    public ItemValue setCreated_at(Double created_at) {
         this.created_at = created_at;
+        return this;
     }
 
-    public void setUpdated_at(Double updated_at) {
+    public ItemValue setUpdated_at(Double updated_at) {
         this.updated_at = updated_at;
+        return this;
     }
 
     public boolean equals(final Object o) {
@@ -49,14 +44,14 @@ public class ItemValue {
         if (!other.canEqual((Object) this)) return false;
         final Object this$value = this.getValue();
         final Object other$value = other.getValue();
-        if (this$value == null ? other$value != null : !this$value.equals(other$value)) return false;
+        if (!Objects.equals(this$value, other$value)) return false;
         final Object this$created_at = this.getCreated_at();
         final Object other$created_at = other.getCreated_at();
-        if (this$created_at == null ? other$created_at != null : !this$created_at.equals(other$created_at))
+        if (!Objects.equals(this$created_at, other$created_at))
             return false;
         final Object this$updated_at = this.getUpdated_at();
         final Object other$updated_at = other.getUpdated_at();
-        if (this$updated_at == null ? other$updated_at != null : !this$updated_at.equals(other$updated_at))
+        if (!Objects.equals(this$updated_at, other$updated_at))
             return false;
         return true;
     }
@@ -81,35 +76,4 @@ public class ItemValue {
         return "ItemValue(value=" + this.getValue() + ", created_at=" + this.getCreated_at() + ", updated_at=" + this.getUpdated_at() + ")";
     }
 
-    public static class ItemValueBuilder {
-        private String value;
-        private Double created_at;
-        private Double updated_at;
-
-        ItemValueBuilder() {
-        }
-
-        public ItemValue.ItemValueBuilder value(String value) {
-            this.value = value;
-            return this;
-        }
-
-        public ItemValue.ItemValueBuilder created_at(Double created_at) {
-            this.created_at = created_at;
-            return this;
-        }
-
-        public ItemValue.ItemValueBuilder updated_at(Double updated_at) {
-            this.updated_at = updated_at;
-            return this;
-        }
-
-        public ItemValue build() {
-            return new ItemValue(value, created_at, updated_at);
-        }
-
-        public String toString() {
-            return "ItemValue.ItemValueBuilder(value=" + this.value + ", created_at=" + this.created_at + ", updated_at=" + this.updated_at + ")";
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package io.kvstore.api.representationals.storages;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Storage {
@@ -7,15 +8,6 @@ public class Storage {
     private UUID storage_uuid;
 
     private String referer;
-
-    Storage(UUID storage_uuid, String referer) {
-        this.storage_uuid = storage_uuid;
-        this.referer = referer;
-    }
-
-    public static StorageBuilder builder() {
-        return new StorageBuilder();
-    }
 
     public UUID getStorage_uuid() {
         return this.storage_uuid;
@@ -25,26 +17,28 @@ public class Storage {
         return this.referer;
     }
 
-    public void setStorage_uuid(UUID storage_uuid) {
+    public Storage setStorage_uuid(UUID storage_uuid) {
         this.storage_uuid = storage_uuid;
+        return this;
     }
 
-    public void setReferer(String referer) {
+    public Storage setReferer(String referer) {
         this.referer = referer;
+        return this;
     }
 
     public boolean equals(final Object o) {
         if (o == this) return true;
         if (!(o instanceof Storage)) return false;
         final Storage other = (Storage) o;
-        if (!other.canEqual((Object) this)) return false;
+        if (!other.canEqual(this)) return false;
         final Object this$storage_uuid = this.getStorage_uuid();
         final Object other$storage_uuid = other.getStorage_uuid();
-        if (this$storage_uuid == null ? other$storage_uuid != null : !this$storage_uuid.equals(other$storage_uuid))
+        if (!Objects.equals(this$storage_uuid, other$storage_uuid))
             return false;
         final Object this$referer = this.getReferer();
         final Object other$referer = other.getReferer();
-        if (this$referer == null ? other$referer != null : !this$referer.equals(other$referer)) return false;
+        if (!Objects.equals(this$referer, other$referer)) return false;
         return true;
     }
 
@@ -66,29 +60,4 @@ public class Storage {
         return "Storage(storage_uuid=" + this.getStorage_uuid() + ", referer=" + this.getReferer() + ")";
     }
 
-    public static class StorageBuilder {
-        private UUID storage_uuid;
-        private String referer;
-
-        StorageBuilder() {
-        }
-
-        public Storage.StorageBuilder storage_uuid(UUID storage_uuid) {
-            this.storage_uuid = storage_uuid;
-            return this;
-        }
-
-        public Storage.StorageBuilder referer(String referer) {
-            this.referer = referer;
-            return this;
-        }
-
-        public Storage build() {
-            return new Storage(storage_uuid, referer);
-        }
-
-        public String toString() {
-            return "Storage.StorageBuilder(storage_uuid=" + this.storage_uuid + ", referer=" + this.referer + ")";
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package io.kvstore.api.representationals.users;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class UserFull {
@@ -9,16 +10,6 @@ public class UserFull {
     private UUID storage_uuid;
 
     private String api_key;
-
-    UserFull(String email, UUID storage_uuid, String api_key) {
-        this.email = email;
-        this.storage_uuid = storage_uuid;
-        this.api_key = api_key;
-    }
-
-    public static UserFullBuilder builder() {
-        return new UserFullBuilder();
-    }
 
     public String getEmail() {
         return this.email;
@@ -32,16 +23,19 @@ public class UserFull {
         return this.api_key;
     }
 
-    public void setEmail(String email) {
+    public UserFull setEmail(String email) {
         this.email = email;
+        return this;
     }
 
-    public void setStorage_uuid(UUID storage_uuid) {
+    public UserFull setStorage_uuid(UUID storage_uuid) {
         this.storage_uuid = storage_uuid;
+        return this;
     }
 
-    public void setApi_key(String api_key) {
+    public UserFull setApi_key(String api_key) {
         this.api_key = api_key;
+        return this;
     }
 
     public boolean equals(final Object o) {
@@ -51,14 +45,14 @@ public class UserFull {
         if (!other.canEqual((Object) this)) return false;
         final Object this$email = this.getEmail();
         final Object other$email = other.getEmail();
-        if (this$email == null ? other$email != null : !this$email.equals(other$email)) return false;
+        if (!Objects.equals(this$email, other$email)) return false;
         final Object this$storage_uuid = this.getStorage_uuid();
         final Object other$storage_uuid = other.getStorage_uuid();
-        if (this$storage_uuid == null ? other$storage_uuid != null : !this$storage_uuid.equals(other$storage_uuid))
+        if (!Objects.equals(this$storage_uuid, other$storage_uuid))
             return false;
         final Object this$api_key = this.getApi_key();
         final Object other$api_key = other.getApi_key();
-        if (this$api_key == null ? other$api_key != null : !this$api_key.equals(other$api_key)) return false;
+        if (!Objects.equals(this$api_key, other$api_key)) return false;
         return true;
     }
 
@@ -82,35 +76,4 @@ public class UserFull {
         return "UserFull(email=" + this.getEmail() + ", storage_uuid=" + this.getStorage_uuid() + ", api_key=" + this.getApi_key() + ")";
     }
 
-    public static class UserFullBuilder {
-        private String email;
-        private UUID storage_uuid;
-        private String api_key;
-
-        UserFullBuilder() {
-        }
-
-        public UserFull.UserFullBuilder email(String email) {
-            this.email = email;
-            return this;
-        }
-
-        public UserFull.UserFullBuilder storage_uuid(UUID storage_uuid) {
-            this.storage_uuid = storage_uuid;
-            return this;
-        }
-
-        public UserFull.UserFullBuilder api_key(String api_key) {
-            this.api_key = api_key;
-            return this;
-        }
-
-        public UserFull build() {
-            return new UserFull(email, storage_uuid, api_key);
-        }
-
-        public String toString() {
-            return "UserFull.UserFullBuilder(email=" + this.email + ", storage_uuid=" + this.storage_uuid + ", api_key=" + this.api_key + ")";
-        }
-    }
 }

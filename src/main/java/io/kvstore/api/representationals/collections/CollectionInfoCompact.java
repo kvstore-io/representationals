@@ -1,5 +1,7 @@
 package io.kvstore.api.representationals.collections;
 
+import java.util.Objects;
+
 public class CollectionInfoCompact {
 
     private Integer items;
@@ -7,16 +9,6 @@ public class CollectionInfoCompact {
     private double created_at;
 
     private double updated_at;
-
-    CollectionInfoCompact(Integer items, double created_at, double updated_at) {
-        this.items = items;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
-
-    public static CollectionInfoCompactBuilder builder() {
-        return new CollectionInfoCompactBuilder();
-    }
 
     public Integer getItems() {
         return this.items;
@@ -30,26 +22,29 @@ public class CollectionInfoCompact {
         return this.updated_at;
     }
 
-    public void setItems(Integer items) {
+    public CollectionInfoCompact setItems(Integer items) {
         this.items = items;
+        return this;
     }
 
-    public void setCreated_at(double created_at) {
+    public CollectionInfoCompact setCreated_at(double created_at) {
         this.created_at = created_at;
+        return this;
     }
 
-    public void setUpdated_at(double updated_at) {
+    public CollectionInfoCompact setUpdated_at(double updated_at) {
         this.updated_at = updated_at;
+        return this;
     }
 
     public boolean equals(final Object o) {
         if (o == this) return true;
         if (!(o instanceof CollectionInfoCompact)) return false;
         final CollectionInfoCompact other = (CollectionInfoCompact) o;
-        if (!other.canEqual((Object) this)) return false;
+        if (!other.canEqual(this)) return false;
         final Object this$items = this.getItems();
         final Object other$items = other.getItems();
-        if (this$items == null ? other$items != null : !this$items.equals(other$items)) return false;
+        if (!Objects.equals(this$items, other$items)) return false;
         if (Double.compare(this.getCreated_at(), other.getCreated_at()) != 0) return false;
         if (Double.compare(this.getUpdated_at(), other.getUpdated_at()) != 0) return false;
         return true;
@@ -75,35 +70,4 @@ public class CollectionInfoCompact {
         return "CollectionInfoCompact(items=" + this.getItems() + ", created_at=" + this.getCreated_at() + ", updated_at=" + this.getUpdated_at() + ")";
     }
 
-    public static class CollectionInfoCompactBuilder {
-        private Integer items;
-        private double created_at;
-        private double updated_at;
-
-        CollectionInfoCompactBuilder() {
-        }
-
-        public CollectionInfoCompact.CollectionInfoCompactBuilder items(Integer items) {
-            this.items = items;
-            return this;
-        }
-
-        public CollectionInfoCompact.CollectionInfoCompactBuilder created_at(double created_at) {
-            this.created_at = created_at;
-            return this;
-        }
-
-        public CollectionInfoCompact.CollectionInfoCompactBuilder updated_at(double updated_at) {
-            this.updated_at = updated_at;
-            return this;
-        }
-
-        public CollectionInfoCompact build() {
-            return new CollectionInfoCompact(items, created_at, updated_at);
-        }
-
-        public String toString() {
-            return "CollectionInfoCompact.CollectionInfoCompactBuilder(items=" + this.items + ", created_at=" + this.created_at + ", updated_at=" + this.updated_at + ")";
-        }
-    }
 }

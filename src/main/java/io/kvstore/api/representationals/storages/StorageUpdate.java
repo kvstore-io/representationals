@@ -1,33 +1,28 @@
 package io.kvstore.api.representationals.storages;
 
+import java.util.Objects;
+
 public class StorageUpdate {
 
     private String referer;
-
-    StorageUpdate(String referer) {
-        this.referer = referer;
-    }
-
-    public static StorageUpdateBuilder builder() {
-        return new StorageUpdateBuilder();
-    }
 
     public String getReferer() {
         return this.referer;
     }
 
-    public void setReferer(String referer) {
+    public StorageUpdate setReferer(String referer) {
         this.referer = referer;
+        return this;
     }
 
     public boolean equals(final Object o) {
         if (o == this) return true;
         if (!(o instanceof StorageUpdate)) return false;
         final StorageUpdate other = (StorageUpdate) o;
-        if (!other.canEqual((Object) this)) return false;
+        if (!other.canEqual(this)) return false;
         final Object this$referer = this.getReferer();
         final Object other$referer = other.getReferer();
-        if (this$referer == null ? other$referer != null : !this$referer.equals(other$referer)) return false;
+        if (!Objects.equals(this$referer, other$referer)) return false;
         return true;
     }
 
@@ -47,23 +42,4 @@ public class StorageUpdate {
         return "StorageUpdate(referer=" + this.getReferer() + ")";
     }
 
-    public static class StorageUpdateBuilder {
-        private String referer;
-
-        StorageUpdateBuilder() {
-        }
-
-        public StorageUpdate.StorageUpdateBuilder referer(String referer) {
-            this.referer = referer;
-            return this;
-        }
-
-        public StorageUpdate build() {
-            return new StorageUpdate(referer);
-        }
-
-        public String toString() {
-            return "StorageUpdate.StorageUpdateBuilder(referer=" + this.referer + ")";
-        }
-    }
 }
