@@ -6,7 +6,7 @@
 
     <groupId>io.kvstore</groupId>
     <artifactId>representationals</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-RC</version>
 
     <name>representationals</name>
     <description>Representational classes used by KVStore.io API and SDK</description>
