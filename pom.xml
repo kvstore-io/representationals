@@ -32,6 +32,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <url>https://github.com/kvstore-io/representationals</url>
+        <connection>scm:git:git@github.com:kvstore-io/representationals.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
     <build>
         <pluginManagement>
             <plugins>
